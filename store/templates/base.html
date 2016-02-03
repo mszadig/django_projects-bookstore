@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <title>{% block title %} Welcome to Mystery Books{% endblock %}</title>   <!--  title is a builtin filter-->
+</head>
+<body background="{% static 'base/img/header_full.jpg' %}">
+ <!--  create block content-->
+ {% block content %}
+
+{% if request.user.is_authenticated %}
+    <h4>
+        Welcome, {% if request.user.first_name %}
+        {{ request.user.first_name }}
+        {% else %}
+        {{ request.user.username }}
+        {% endif %}! <a href="{% url 'auth_logout' %}">Log Out</a>
+    </h4>
+{% else %}
+<h4>Welcome, mysterious person!  Would you like to <a href="{% url 'auth_login' %}">log in?</a></h4>
+{% endif %}
+Welcome to Mystery Books Store!  There are {{ count }} books in stock. User location: {{ request.session.location }}
+
+{% endblock %}
+
+</body>
+</html>

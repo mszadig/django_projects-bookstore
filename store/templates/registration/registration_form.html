@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'base.html' %}    <!--- must be first statement --->
+
+
+<h1>Your account is complete.</h1>
+{% endblock %}
 <form method="post" action=".">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit"  value="Register" />
 </form>
-
-</body>
-</html>
+{% block contents %}
