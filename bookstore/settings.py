@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'registration', #this adds in the registration redux package
     'social.apps.django_app.default',
+    'bootstrap3',
+    'bootstrap_themes',
     'store',
 )
 
