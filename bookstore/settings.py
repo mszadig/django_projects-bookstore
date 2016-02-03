@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration', #this adds in the registration redux package
+    'store',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +102,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Registration   variables for the django-registration-redux package
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/store/'
+
+#Email setting
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+#EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+#EMAIL_FILE_PATH = "/tmp/app-messages"
+EMAIL_HOST_USER = "mszadig@gmail.com"
+EMAIL_HOST_PASSWORD = "hxyfhbrzqwebohve"
+EMAIL_PORT = 587  #TLS
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "mszadig@gmail.com"
+
