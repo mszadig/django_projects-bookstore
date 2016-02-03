@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registration', #this adds in the registration redux package
+    'social.apps.django_app.default',
     'store',
 )
 
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -118,4 +121,16 @@ EMAIL_HOST_PASSWORD = "hxyfhbrzqwebohve"
 EMAIL_PORT = 587  #TLS
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "mszadig@gmail.com"
+
+#Authentication backend for social apps
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'   #Need the fall back
+)
+
+#Social Auth - Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '1680901912191423'
+SOCIAL_AUTH_FACEBOOK_SECRET = '637742ef0143db8fbc2a9813d4f75cc4'
+
+
 
