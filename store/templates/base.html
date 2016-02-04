@@ -4,11 +4,20 @@
 {% load bootstrap3 %}
 
 {% load bootstrap_themes  %}
+
+<!--Reference the compressor module-->
+{% load compress %}
+
 {% bootstrap_styles theme='simplex' type='min.css' %}
 
-{% block bootstrap3_extra_head %}
+{% block bootstrap3_extra_head %}  <!-- Can't compress cdn files-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+
+     <!--Can compress files in the local section
+        user compress tag with target arg: css, js, ....-->
+    {% compress  css %}
     <link href="{% static 'base/css/style.css' %}" rel="stylesheet" type="text/css">
+    {% endcompress %}
 {% endblock %}
 
 {% block bootstrap3_title %}

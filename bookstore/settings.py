@@ -37,11 +37,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration', #this adds in the registration redux package
     'social.apps.django_app.default',
+    'registration', #this adds in the registration redux package
     'bootstrap3',
     'bootstrap_themes',
-    'store',
+    "compressor",
+    'store',    #the home built app should be last in the list
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,7 +108,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')   #this will create a top level directory
+                                                # must be visible to django and r+w
+COMPRESS_ENABLED = True   #Forces compression to be on.  Normally this is the opposite of debug but we want to force this
+                          # when we have debugging on for now.
 
+                          #the finders below tell django to be able to find the cached compressed files
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 #Registration   variables for the django-registration-redux package
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True

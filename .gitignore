@@ -110,5 +110,5 @@ fabric.properties
 
 # Databases
 #SQLite databases
-*.sqlite3
+*.sqlite3*
 
